@@ -25,7 +25,7 @@
 				<div class="showBus" >嘀一巴士免费巡游车：</div>
 				<div id="busline" class="showBus" >DF01（晚班测试）总部基地～房山窦店部基地～房山窦店</div>
 				<div id="buslineTime" class="showBusTime" >发车时间：2024-04-05 21:07:36</div>
-				<div id="busCode" class="showBusTime" >车牌号：京A23456</div>
+				<div id="busCode" class="showBusTime" >车牌号：京AAB121</div>
 				<div id="timeDivDay" class="showTimer" > 2024-03-28<br>00:00:00 </div>
 				<div id="timeDivMS" class="showTimer" style="height: 180px;color: black;letter-spacing: 15px;background-image: url('img/msbg.png');" > 999 </div>
 			</div>
@@ -82,9 +82,16 @@ function showTimer(){
 }
 
 function getTicket(){
+	let curr = new Date();
+	let day = formatDate2Date(curr);
+
 	$("#busline").html("DS15（晚班）软件园一二期-松兰堡");
-	$("#buslineTime").html("发车时间：" + "2024-04-26 18:10:00");
-	$("#busCode").html("车牌号：" + "京AAB121");
+	$("#buslineTime").html("发车时间：" + day + " 18:10:00");
+	
+	var busCode =	getUrlParams('busCode');
+	if(busCode){
+		$("#busCode").html("车牌号：" + "京" + busCode);
+	}
 	
 	var checkCode =	getUrlParams('checkCode');
 	
